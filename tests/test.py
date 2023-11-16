@@ -1,7 +1,9 @@
 import pytest
-from main import fibonachi
-from main import bubble_sort
-from main import calculator
+import sys
+sys.path.append('C:/Users/MYaO/PycharmProjects/Testing_ivpko')
+from src.library import fibonachi
+from src.library import bubble_sort
+from src.library import calculator
 
 @pytest.mark.parametrize("n,expected", [
     (1, [1]),

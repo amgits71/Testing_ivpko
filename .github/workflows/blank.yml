@@ -1,12 +1,13 @@
 name: Test CI CD
 on:
-  push:
-    branches: [main]
+  push
 jobs:
   test-and-coverage-package:
     runs-on: ubuntu-latest
     env:
-      PYTEST_REPORT_PATH: /report.html
+      COVERAGE_HTML_REPORT_PATH: /tmp/coverage_html_report
+      COVERAGE_XML_REPORT_PATH: /tmp/coverage_xml_report.xml
+      PYTEST_REPORT_PATH: /tmp/report.html
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v3
@@ -18,7 +19,7 @@ jobs:
       - name: "Install project dependencies"
         run: pip install -r requirements.txt
       - name: "Run tests and code coverage analysis"
-        run: coverage run -m pytest --html=${{ env.PYTEST_REPORT_PATH }} --self-contained-html
+        run: coverage run -m pytest tests/test.py --html=${{ env.PYTEST_REPORT_PATH }} --self-contained-html
       - name: "Generate code coverage html report"
         run: coverage html --directory ${{ env.COVERAGE_HTML_REPORT_PATH }}
       - name: "Archive pytest and coverage reports"
