@@ -6,9 +6,7 @@ jobs:
   test-and-coverage-package:
     runs-on: ubuntu-latest
     env:
-      COVERAGE_HTML_REPORT_PATH: /coverage_html_report
-      COVERAGE_XML_REPORT_PATH: /coverage_xml_report.xml
-      PYTEST_REPORT_PATH: /report.html
+      PYTEST_REPORT_PATH: /pytest_report.html
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v3
